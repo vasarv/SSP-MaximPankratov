@@ -2,7 +2,7 @@ import pygame as pg
 
 pg.init()
 
-# класс экрана игры
+
 class ScreenGame:
     def __init__(self):
         self.width = 800
@@ -11,16 +11,16 @@ class ScreenGame:
         self.win = pg.display.set_mode((self.width, self.height))
         self.tick = 60
 
-    def chahge_screen(self, width, height, color = None):
+    def chahge_screen(self, width, height, color=None):
         self.width = width
         self.height = height
         if color:
             self.color = color
 
-# экземпляр класса
+
 sc = ScreenGame()
 
-# класс количества раундов
+
 class NumberRounds:
 
     def __init__(self):
@@ -32,24 +32,29 @@ class NumberRounds:
     def decrease_rounds(self):
         if self.number_rounds > 0:
             self.number_rounds -= 1
-       
 
 
 nr = NumberRounds()
 
-# класс подсчета очков
+
 class Scores:
     def __init__(self):
         self.pl_score = 0
         self.comp_score = 0
+        self.last_score: tuple
 
-    def change_scores(self, player_score = 0, computer_score = 0):
+    def change_scores(self, player_score=0, computer_score=0):
         self.pl_score += player_score
         self.comp_score += computer_score
+        self.last_score = (player_score, computer_score)
+
+    def GetLastScore(self):
+        return self.last_score
+
 
 scores = Scores()
 
-# флаг выбора пользователя
+
 class UsersChoice:
 
     def __init__(self):
@@ -61,15 +66,16 @@ class UsersChoice:
 
 uc = UsersChoice()
 
-# шрифты
+
 class Fonts:
     def __init__(self):
-        self.roboto = pg.font.SysFont('roboto', 48)
-        self.arial = pg.font.SysFont('arial', 36)
+        self.roboto = pg.font.SysFont("roboto", 48)
+        self.arial = pg.font.SysFont("arial", 36)
+
 
 ft = Fonts()
 
-# цвета
+
 class Colors:
 
     def __init__(self):
@@ -79,7 +85,7 @@ class Colors:
 
 colors = Colors()
 
-# флаг старта раунда
+
 class StartGame:
 
     def __init__(self):
@@ -90,4 +96,3 @@ class StartGame:
 
 
 sg = StartGame()
-

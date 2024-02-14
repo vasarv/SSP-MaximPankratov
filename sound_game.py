@@ -1,6 +1,6 @@
 import pygame as pg
 
-# класс звука
+
 class SoundGame:
 
     def __init__(self):
